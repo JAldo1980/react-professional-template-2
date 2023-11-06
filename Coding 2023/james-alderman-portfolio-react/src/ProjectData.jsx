@@ -1,5 +1,14 @@
 export default [
   {
+    headline: "Small Business Landing Page",
+    description:
+      "Glow is a small business with a focus on deliving LinkedIn personal branding services and professional personal websites for the individual.",
+    tech: ["React", "Node", "JavaScript"],
+    buttonOne: "https://github.com/JAldo1980/invoice-builder/tree/main",
+    buttonTwo: "https://invoice-it-up.netlify.app/",
+    image: "public/glow-landing-page.png",
+  },
+  {
     headline: "Invoice Builder",
     description:
       "The invoice builder allows users to create and print invoices. Users can input item details such as name, cost, and quantity, which are then dynamically added to the invoice. The invoice builder code simplifies the process of generating professional invoices for various business needs.",
