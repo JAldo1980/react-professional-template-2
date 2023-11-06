@@ -1,0 +1,495 @@
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol
+      *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a,
+button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+  all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+  color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+  content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+  all: revert;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  /* colours */
+  --greenBackground: #97dcc7;
+  --white: #ffffff;
+}
+
+/* END OF CSS RESET */
+/* MOBILE FIRST DESIGN */
+
+/* color containers */
+
+.green-container {
+  --greenBackground: #97dcc7;
+}
+
+/* CONTAINER STYLING */
+
+.container {
+  background-color: var(--greenBackground);
+}
+
+/* NAVIGATION STYLING */
+
+nav {
+  display: none;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  background-color: var(
+    --greenBackground
+  ); /* Replace with your desired background color */
+  z-index: 999; /* Adjust the z-index value as needed */
+}
+
+.desktop-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--greenBackground);
+  padding: 1em;
+}
+
+.logo-img {
+  width: 70px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5em;
+}
+
+.nav-links a:hover {
+  color: #1c5b8e;
+}
+
+/* MOBILE NAV */
+
+.mobile-nav {
+  cursor: pointer;
+  position: relative;
+}
+
+.drop-down {
+  display: none;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--greenBackground);
+  padding: 1em;
+}
+
+.show {
+  display: flex;
+}
+
+.drop-down a {
+  padding: 0.5em 0;
+}
+
+.drop-down a:hover {
+  color: #1c5b8e;
+}
+
+.hamburger {
+  display: block;
+  padding: 1em;
+}
+
+.bar {
+  background-color: black;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  display: block;
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/*  */
+
+/* HEADER STYLING */
+
+header {
+  background-color: var(--greenBackground);
+  border: none;
+  padding: 1em 1em 0 1em;
+}
+
+.header-grid {
+  margin-top: 6em;
+  display: grid;
+}
+
+.header-left-col {
+  text-align: start;
+  line-height: 1.8;
+  padding-bottom: 0;
+}
+
+.header-left-col h1 {
+  font-size: 1.3rem;
+}
+
+.header-left-col h1 span {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+#hero-btn {
+  transition: all 0.5s ease;
+  color: #fff;
+  border: 1px solid white;
+  width: 100%;
+  margin-top: 1em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  font-family: "Roboto Mono", monospace;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 1.1rem;
+  background-color: transparent;
+
+  outline: none;
+  border-radius: 4px;
+}
+#hero-btn:hover {
+  color: #001f3f;
+  background-color: #fff;
+}
+
+/* ABOUT STYLING */
+
+.about-container {
+  padding: 1em;
+  text-align: start;
+  background-color: #fff;
+}
+
+.about-inner-container {
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.about-container h2 {
+  font-family: "Exo 2", sans-serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* WORK/PROJECTS */
+
+.work-container {
+  padding: 1em;
+  background-color: #1c5b8e;
+}
+
+.work-headline {
+  margin: 0 auto;
+  font-family: "Exo 2", sans-serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: start;
+  max-width: 1400px;
+  padding-bottom: 1.5em;
+}
+
+.project-area {
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.project-left-col h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  text-align: start;
+}
+
+.project-left-col p {
+  margin-top: 1em;
+  color: white;
+  text-align: justify;
+}
+
+.project-left-col ul li {
+  color: white;
+  text-align: start;
+  font-weight: 600;
+}
+
+.project-btn-flex {
+  margin-top: 1em;
+  display: flex;
+  justify-content: start;
+  gap: 2em;
+}
+
+.project-btn-flex button {
+  transition: all 0.5s ease;
+  color: #fff;
+  border: 1px solid white;
+  width: 100%;
+  margin-top: 1em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  font-family: "Roboto Mono", monospace;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 1.1rem;
+  background-color: transparent;
+  outline: none;
+  border-radius: 4px;
+}
+
+.project-btn-flex button:hover {
+  color: #001f3f;
+  background-color: #fff;
+}
+
+.tech-list {
+  padding-top: 1em;
+  margin-left: 1em;
+  list-style: circle;
+}
+
+.tech-list li {
+  padding-top: 0.5em;
+}
+
+/* TABLET RESPONSIVE */
+
+@media (min-width: 820px) {
+  .james-alderman-img {
+    width: 600px;
+  }
+
+  .project-img {
+    width: 800px;
+  }
+}
+
+/* CONTACT PAGE */
+
+.contact-container {
+  background-color: #fff;
+}
+
+.contact-container h3 {
+  padding-top: 1em;
+  margin: 0 auto;
+  font-size: 1.5em;
+}
+
+.social-icons {
+  padding: 1em 0;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.linkedin-icon {
+  width: 50px;
+  cursor: pointer;
+}
+
+.email-icon {
+  width: 50px;
+  cursor: pointer;
+}
+
+/* FOOTER STYLING */
+
+.footer-el {
+  padding: 1em 0;
+}
+
+small {
+  font-size: 0.7rem;
+}
+
+/* ****************** */
+/* DESKTOP RESPONSIVE */
+/* ****************** */
+
+@media (min-width: 1008px) {
+  header {
+    margin: 0 auto;
+    max-width: 1400px;
+  }
+
+  nav {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .header-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .header-left-col h1 {
+    font-size: 2rem;
+  }
+
+  .header-left-col h1 span {
+    font-size: 4rem;
+  }
+
+  .about-inner-container {
+    padding-bottom: 2em;
+  }
+
+  .project-card {
+    margin-top: 0.5em;
+    display: grid;
+    gap: 3em;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
+
+/* SMOOTH SCROLLING */
+
+#home-anchor {
+  scroll-behavior: smooth;
+  cursor: pointer;
+}
+
+#project-scroll {
+  scroll-behavior: smooth;
+  cursor: pointer;
+}
